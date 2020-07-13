@@ -2,6 +2,9 @@
 
 Simple Angular App (Default Starting App) automated with Github Action CI Pipeline for testing and building, connected to Codacy with a coverage badge and a CD Pipeline deploying the Application with FTP, also via Github Action.
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JakobVesely/angular-github-actions&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&utm_medium=referral&utm_content=JakobVesely/angular-github-actions&utm_campaign=Badge_Coverage)
+
 ## Prepare a CI Pipeline
 
 ### 1. Install Dev Dependencies
@@ -115,9 +118,6 @@ jobs:
 ### 5. Connect Codacy Code Coverage
 
 Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository Name } > Settings > Secrets.
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JakobVesely/angular-github-actions&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&utm_medium=referral&utm_content=JakobVesely/angular-github-actions&utm_campaign=Badge_Coverage)
 
 ```yml
       - name: Run codacy-coverage-reporter
