@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "editor.detectIndentation": false,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "tslint.configFile": "../tslint.json"
+}
