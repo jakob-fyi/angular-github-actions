@@ -1,5 +1,7 @@
 # Angular Github Actions
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7e17715d9aec43e58f18a331fac56823)](https://app.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&utm_medium=referral&utm_content=JakobVesely/angular-github-actions&utm_campaign=Badge_Grade_Dashboard)
+
 ## Prepare a CI Pipeline
 
 ### 1. Install Dev Dependencies
