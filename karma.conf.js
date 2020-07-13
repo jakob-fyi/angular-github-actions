@@ -4,7 +4,6 @@
 module.exports = function (config)
 {
     config.set({
-        restartOnFileChange: true,
         browsers: ['Chrome', 'ChromeHeadlessCustom'],
         customLaunchers: {
             ChromeHeadlessCustom: {

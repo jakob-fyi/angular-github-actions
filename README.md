@@ -19,7 +19,6 @@ File: `/karma.conf.js`
 ```js
 config.set({
     /* Insert Start */
-    restartOnFileChange: true,
     browsers: ['Chrome', 'ChromeHeadlessCustom'],
     customLaunchers: {
         ChromeHeadlessCustom: {
@@ -102,3 +101,5 @@ jobs:
       - name: List Files in Distribution Directory
         run: ls -R ./dist
 ```
+
+### 
