@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build & Test
+    name: Build, Test & Deploy
     runs-on: ubuntu-latest
 
     strategy:
@@ -49,3 +49,11 @@ jobs:
       
       - name: List Files in Distribution Directory
         run: ls -R ./dist
+        
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: "${{ secrets.CD_FTP_SERVER }}"
+          ftp-username: "${{ secrets.CD_FTP_USERNAME }}"
+          ftp-password: "${{ secrets.CD_FTP_PASSWORD }}"
+          local-dir: "dist/"
