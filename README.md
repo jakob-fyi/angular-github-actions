@@ -126,3 +126,33 @@ Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository 
           project-token: ${{ secrets.CODACY_CODE_COVERAGE_TOKEN }}
           coverage-reports: coverage/lcov.info
 ```
+
+## Prepare a CI/CD Pipeline
+
+### 1. Adding `.git-ftp-include`
+
+We need to add a `.git-ftp-include` in our root directory, because it is ignored by git (.gitignore) and won´t be uploaded with git ftp.
+```
+!dist/
+```
+
+### 2. Add Credential Secrets
+
+Adding the three credential secrets under { Repository Name } > Settings > Secrets:
+- `CD_FTP_SERVER`
+- `CD_FTP_USERNAME`
+- `CD_FTP_PASSWORD`
+
+### 3. Extend the CI Pipeline for Deployment with FTP
+
+We are using the Pipeline from before and adding one last step, the git ftp action, to it:
+
+```yml
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: "${{ secrets.CD_FTP_SERVER }}"
+          ftp-username: "${{ secrets.CD_FTP_USERNAME }}"
+          ftp-password: "${{ secrets.CD_FTP_PASSWORD }}"
+          local-dir: "dist/"
+```
