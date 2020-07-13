@@ -132,16 +132,16 @@ Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository 
 ### 1. Adding `.git-ftp-include`
 
 We need to add a `.git-ftp-include` in our root directory, because it is ignored by git (.gitignore) and won´t be uploaded with git ftp.
-```
+```sh
 !dist/
 ```
 
 ### 2. Add Credential Secrets
 
 Adding the three credential secrets under { Repository Name } > Settings > Secrets:
-- `CD_FTP_SERVER`
-- `CD_FTP_USERNAME`
-- `CD_FTP_PASSWORD`
+  - `CD_FTP_SERVER`
+  - `CD_FTP_USERNAME`
+  - `CD_FTP_PASSWORD`
 
 ### 3. Extend the CI Pipeline for Deployment with FTP
 
