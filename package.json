@@ -1,6 +1,6 @@
 {
     "name": "angular-github-actions",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -10,7 +10,7 @@
         "e2e": "ng e2e",
         "ci:clean": "rimraf ./dist",
         "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom --code-coverage",
-        "ci:build": "ng build --prod --base-href /"
+        "ci:build": "ng build --prod"
     },
     "private": true,
     "dependencies": {
