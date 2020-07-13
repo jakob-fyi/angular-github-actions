@@ -53,7 +53,7 @@ Add `ci:clean`, `ci:test` and `ci:build` scripts to `/package.json` File!
 
 ### 4. Create Github Action
 
-File: `pipeline-buidl-test.yml`
+File: `pipeline-build-test.yml`
 
 ```yml
 name: Build and Test
