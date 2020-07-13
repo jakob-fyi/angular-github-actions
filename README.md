@@ -1,27 +1,104 @@
-# AngularGithubActions
+# Angular Github Actions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+## Prepare a CI Pipeline
 
-## Development server
+### 1. Install Dev Dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```sh
+npm install ci --save
+npm install puppeteer --save-dev
+```
 
-## Code scaffolding
+jasmine and karma packages comes automatically via `ng cli` (starting new angular project with ng new)!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### 2. Add Karma Config
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+File: `/karma.conf.js`
 
-## Running unit tests
+```js
+config.set({
+    /* Insert Start */
+    restartOnFileChange: true,
+    browsers: ['Chrome', 'ChromeHeadlessCustom'],
+    customLaunchers: {
+        ChromeHeadlessCustom: {
+            base: 'ChromeHeadless',
+            flags: ['--no-sandbox', '--disable-gpu']
+        }
+    },
+    /* Insert End */
+    ...
+});
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### 3. Setup npm scripts for CI
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Add `ci:clean`, `ci:test` and `ci:build` scripts to `/package.json` File!
 
-## Further help
+```json
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "ci:clean": "rimraf ./dist",
+    "ci:test": "ng test --watch=false --browsers=ChromeHeadlessCustom --code-coverage",
+    "ci:build": "ng build --prod"
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### 4. Create Github Action
+
+File: `pipeline-buidl-test.yml`
+
+```yml
+name: Build and Test
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: npm ci
+          
+      - name: Run Unit Tests
+        run: npm run ci:test
+
+      - name: Clean Distribution Directory
+        run: npm run ci:clean
+        
+      - name: Build Application
+        run: npm run ci:build
+      
+      - name: List Files in Distribution Directory
+        run: ls -R ./dist
+```
