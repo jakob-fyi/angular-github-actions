@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build, Test & Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build, Test & Deploy
+    name: All Steps (Build, Test & Deploy)
     runs-on: ubuntu-latest
 
     strategy:
