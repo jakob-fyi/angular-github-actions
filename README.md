@@ -140,9 +140,9 @@ We need to add a `.git-ftp-include` in our root directory, because it is ignored
 ### 2. Add Credential Secrets
 
 Adding the three credential secrets under { Repository Name } > Settings > Secrets:
-  - `CD_FTP_SERVER`
-  - `CD_FTP_USERNAME`
-  - `CD_FTP_PASSWORD`
+* `CD_FTP_SERVER`
+* `CD_FTP_USERNAME`
+* `CD_FTP_PASSWORD`
 
 ### 3. Extend the CI Pipeline for Deployment with FTP
 
