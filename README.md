@@ -1,5 +1,7 @@
 # Angular Github Actions
 
+Simple Angular App (Default Starting App) automated with Github Action CI Pipeline for testing and building, connected to Codacy with a coverage badge and a CD Pipeline deploying the Application with FTP, also via Github Action.
+
 ## Prepare a CI Pipeline
 
 ### 1. Install Dev Dependencies
@@ -110,7 +112,7 @@ jobs:
         run: ls -R ./dist
 ```
 
-### Connect Codacy Code Coverage
+### 5. Connect Codacy Code Coverage
 
 Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository Name } > Settings > Secrets.
 
