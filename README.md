@@ -11,7 +11,6 @@ npm install puppeteer --save-dev
 
 jasmine and karma packages comes automatically via `ng cli` (starting new angular project with ng new)!
 
-
 ### 2. Add Karma Config
 
 File: `/karma.conf.js`
@@ -40,7 +39,6 @@ coverageIstanbulReporter: {
     fixWebpackSourcePaths: true
 },
 ```
-
 
 ### 3. Setup npm scripts for CI
 
@@ -117,6 +115,7 @@ jobs:
 Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository Name } > Settings > Secrets.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JakobVesely/angular-github-actions&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&utm_medium=referral&utm_content=JakobVesely/angular-github-actions&utm_campaign=Badge_Coverage)
 
 ```yml
       - name: Run codacy-coverage-reporter
