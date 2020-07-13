@@ -31,6 +31,16 @@ config.set({
 });
 ```
 
+Also adapt Instanbul Reporter path to directory `./converage`, if neccessary!
+
+```js
+coverageIstanbulReporter: {
+    dir: require('path').join(__dirname, './coverage'),
+    reports: ['html', 'lcovonly', 'text-summary'],
+    fixWebpackSourcePaths: true
+},
+```
+
 
 ### 3. Setup npm scripts for CI
 
@@ -102,4 +112,16 @@ jobs:
         run: ls -R ./dist
 ```
 
-### 
+### Connect Codacy Code Coverage
+
+Adding a secret named `CODACY_CODE_COVERAGE_TOKEN` in GitHub under { Repository Name } > Settings > Secrets.
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/413a9957f4784296a40e889235c20d4d)](https://www.codacy.com/manual/JakobVesely/angular-github-actions?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JakobVesely/angular-github-actions&amp;utm_campaign=Badge_Grade)
+
+```yml
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_CODE_COVERAGE_TOKEN }}
+          coverage-reports: coverage/lcov.info
+```
